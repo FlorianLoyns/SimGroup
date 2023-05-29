@@ -29,4 +29,4 @@ Diese Webanwendung wurde von Florian Loyns entwickelt.
 
 ## Lizenz
 
-Dieses Projekt steht unter der [MIT-Lizenz](https://github.com/IhrBenutzername/SimGroup-Zufällige-Gruppeneinteilung/blob/main/LICENSE). Sie können die Software frei verwenden, ändern und verteilen, unter der Bedingung, dass der Urheberrechtsvermerk und die Lizenzbedingungen erhalten bleiben.
+Dieses Projekt steht unter der [MIT-Lizenz](https://github.com/SimuZen/SimGroup/blob/main/LICENSE). Sie können die Software frei verwenden, ändern und verteilen, unter der Bedingung, dass der Urheberrechtsvermerk und die Lizenzbedingungen erhalten bleiben.
