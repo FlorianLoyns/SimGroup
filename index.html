@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>SimGroup - Zufällige Gruppeneinteilung und Zeitplanung für Simulationssitzungen</title>
+      <meta charset="UTF-8" />
+      <meta name="description" content="Eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden." />
+      <meta name="keywords" content="Gruppeneinteilung, Zeitplanung, Simulationssitzungen, Webanwendung, Lernende, Effizienz" />
+      <style>
+         .container {
+         max-width: 900px;
+         margin: 0 auto;
+         text-align: center;
+         }
+         .container2 {
+         max-width: 600px;
+         margin: 0 auto;
+         text-align: center;
+         }
+         .container2 p {
+         text-align: justify;
+         }
+         .group {
+         margin-bottom: 20px;
+         }
+         .table-container {
+         width: 100%;
+         overflow-x: auto;
+         }
+         table {
+         margin: 0 auto;
+         border-collapse: collapse;
+         width: 100%;
+         }
+         th,
+         td {
+         border: 1px solid black;
+         padding: 5px;
+         }
+         .names {
+         width: 35%;
+         }
+         .hidden {
+         display: none;
+         }
+         @media print {
+         @page {
+         size: landscape;
+         }
+         body * {
+         visibility: hidden;
+         }
+         .table-container,
+         .table-container * {
+         visibility: visible;
+         }
+         .table-container {
+         position: absolute;
+         left: 0;
+         top: 0;
+         }
+         table {
+         font-family: "Times New Roman", Times, serif;
+         border-collapse: collapse;
+         width: 99%;
+         margin: 0;
+         border: 1px solid black;
+         }
+         th,
+         td {
+         border: 1px solid black;
+         text-align: left;
+         padding: 3px;
+         }
+         th {
+         background-color: #ddd;
+         text-align: center;
+         }
+         td {
+         background-color: #fff;
+         }
+         td.names {
+         text-align: left;
+         }
+         th,
+         td:not(.names) {
+         text-align: center;
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="container2">
+            <h1>Zufällige Gruppeneinteilung und Zeitplanung für Simulationssitzungen</h1>
+            <p>
+               Dies ist eine Webanwendung zur Gruppeneinteilung für Simulationssitzungen. Sie ermöglicht das zufällige Aufteilen einer Liste von Lernenden in Gruppen und das Erstellen eines Zeitplans für ihre Simulationen.
+            </p>
+            <p>
+               Sie können die Start- und Endzeit sowie die Dauer der Simulationssitzung (inklusive Briefing-, Simulations- und Debriefing-Zeit) festlegen und eine Pausenzeit zwischen den Gruppen definieren.
+            </p>
+            <p>
+               <strong>Geben Sie die Namen der Lernenden ein und klicken Sie auf "Gruppen bilden", um sie zufällig in Gruppen aufzuteilen. Die erstellten Gruppen und der Zeitplan werden auf der Seite angezeigt.
+               </strong>
+            </p>
+         </div>
+         <textarea id="students" rows="10" cols="50"></textarea>
+         <br />
+         <label for="start-time">Startzeit:</label>
+         <input type="time" id="start-time" name="start-time" />
+         <label for="end-time">Endzeit:</label>
+         <input type="time" id="end-time" name="end-time" />
+         <br />
+         <label for="briefing-time">Dauer von Briefing (in Minuten):</label>
+         <input type="number" id="briefing-time" name="briefing-time" min="1" max="180" value="10" />
+         <br />
+         <label for="simulation-time">Dauer von Simulation (in Minuten):</label>
+         <input type="number" id="simulation-time" name="simulation-time" min="1" max="180" value="20" />
+         <br />
+         <label for="debriefing-time">Dauer von Debriefing (in Minuten):</label>
+         <input type="number" id="debriefing-time" name="debriefing-time" min="1" max="180" value="30" />
+         <br />
+         <label for="break-time">Pause zwischen den Stationen (in Minuten):</label>
+         <input type="number" id="break-time" name="break-time" min="0" max="60" value="5" />
+         <br />
+         <label for="num-groups">Anzahl der Gruppen:</label>
+         <input type="number" id="num-groups" name="num-groups" min="1" max="10" value="3" />
+         <br />
+         <button onclick="groupStudents()" style="margin-top: 10px;">Gruppen bilden</button>
+         <div id="groups" style="margin-top: 20px;"></div>
+      </div>
+      <script>
+         function groupStudents() {
+             // Get the students from the textarea and split them into an array
+             var studentList = document.getElementById("students").value.trim().split("\n");
+         
+             // Shuffle the array randomly
+             studentList.sort(function () {
+                 return 0.5 - Math.random();
+             });
+         
+             // Get the start and end time input values and create Date objects for them
+             var startTimeInput = document.getElementById("start-time");
+             var endTimeInput = document.getElementById("end-time");
+             var startTime = new Date();
+             startTime.setHours(startTimeInput.value.split(":")[0]);
+             startTime.setMinutes(startTimeInput.value.split(":")[1]);
+             startTime.setSeconds(0);
+             startTime.setMilliseconds(0);
+             var endTime = new Date();
+             endTime.setHours(endTimeInput.value.split(":")[0]);
+             endTime.setMinutes(endTimeInput.value.split(":")[1]);
+             endTime.setSeconds(0);
+             endTime.setMilliseconds(0);
+         
+             // Get the duration input values (in minutes)
+             var briefingInput = document.getElementById("briefing-time");
+             var briefingDuration = parseInt(briefingInput.value);
+             var simulationInput = document.getElementById("simulation-time");
+             var simulationDuration = parseInt(simulationInput.value);
+             var debriefingInput = document.getElementById("debriefing-time");
+             var debriefingDuration = parseInt(debriefingInput.value);
+         
+             // Get the break time input value (in minutes)
+             var breakTimeInput = document.getElementById("break-time");
+             var breakTime = parseInt(breakTimeInput.value);
+         
+             // Get the number of groups to create
+             var numGroupsInput = document.getElementById("num-groups");
+             var numGroups = parseInt(numGroupsInput.value);
+         
+             // Divide the available time into equal intervals for each group
+             var briefingTimeInput = document.getElementById("briefing-time");
+             var briefingTime = parseInt(briefingTimeInput.value);
+             var simulationTimeInput = document.getElementById("simulation-time");
+             var simulationTime = parseInt(simulationTimeInput.value);
+             var debriefingTimeInput = document.getElementById("debriefing-time");
+             var debriefingTime = parseInt(debriefingTimeInput.value);
+         
+             var totalStationTime = briefingTime + simulationTime + debriefingTime;
+             var groupDuration = totalStationTime * 60 * 1000;
+             var breakDuration = breakTime * 60 * 1000;
+             var groupInterval = groupDuration + breakDuration;
+         
+             var groupStartTimes = [];
+             var groupEndTimes = [];
+             var time = startTime.getTime();
+             while (time < endTime.getTime()) {
+                 groupStartTimes.push(new Date(time));
+                 groupEndTimes.push(new Date(time + groupDuration));
+                 time += groupInterval;
+             }
+         
+             // Divide the students into the specified number of groups
+             var groups = [];
+             for (var i = 0; i < numGroups; i++) {
+                 groups.push([]);
+             }
+             for (var i = 0; i < studentList.length; i++) {
+                 var groupIndex = i % numGroups;
+                 groups[groupIndex].push(studentList[i]);
+             }
+         
+             // Display the groups on the page
+             var groupsDiv = document.getElementById("groups");
+             groupsDiv.innerHTML = "";
+             var tableContainer = document.createElement("div");
+             tableContainer.classList.add("table-container");
+             var table = document.createElement("table");
+             var headerRow = document.createElement("tr");
+             headerRow.innerHTML = "<th>Gruppe</th><th>Startzeit</th><th>Briefing</th><th>Simulation</th><th>Debriefing</th><th>Studenten</th>";
+             table.appendChild(headerRow);
+             for (var i = 0; i < groups.length; i++) {
+                 var groupStartTime = groupStartTimes[i];
+                 var briefingEndTime = new Date(groupStartTime.getTime() + briefingTime * 60 * 1000);
+                 var simulationEndTime = new Date(briefingEndTime.getTime() + simulationTime * 60 * 1000);
+                 var debriefingEndTime = new Date(simulationEndTime.getTime() + debriefingTime * 60 * 1000);
+                 var groupRow = document.createElement("tr");
+                 groupRow.innerHTML =
+                     "<td>" +
+                     (i + 1) +
+                     "</td><td>" +
+                     groupStartTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     "</td><td>" +
+                     groupStartTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     " - " +
+                     briefingEndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     "</td><td>" +
+                     briefingEndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     " - " +
+                     simulationEndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     "</td><td>" +
+                     simulationEndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     " - " +
+                     debriefingEndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) +
+                     "</td><td class='names'>" + // add class 'names'
+                     groups[i].join(", ") +
+                     "</td>";
+                 table.appendChild(groupRow);
+             }
+             tableContainer.appendChild(table);
+             groupsDiv.appendChild(tableContainer);
+         
+             // Show the print button
+             var printButton = document.getElementById("print-button");
+             printButton.classList.remove("hidden");
+         }
+         
+         function printGroups() {
+             // Add the .printable class to the container and remove it afterwards
+             var container = document.querySelector(".container");
+             container.classList.add("printable");
+             window.print();
+             container.classList.remove("printable");
+         }
+      </script>
+      <center style="margin-top: 10px;">
+         <button id="print-button" class="hidden" onclick="printGroups()">Drucken</button>
+      </center>
+   </body>
+</html>
