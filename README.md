@@ -1,6 +1,6 @@
 # SimGroup - Zufällige Gruppeneinteilung und Zeitplanung für Simulationssitzungen
 
-Dieses Repository enthält eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden. Klicken Sie [hier](http://htmlpreview.github.io/?https://github.com/SimuZen/SimGroup/blob/main/index.html), um die Webseite anzuzeigen und zu nutzen.
+Dieses Repository enthält eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden. Klicken Sie [hier](https://simuzen.github.io/SimGroup/), um die Webseite anzuzeigen und zu nutzen.
 
 ## Beschreibung
 
