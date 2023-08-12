@@ -6,6 +6,9 @@ Dieses Repository enthält eine Webanwendung zur effizienten Organisation von Gr
 
 Die Webanwendung ermöglicht es, eine Liste von Lernenden zufällig in Gruppen aufzuteilen und einen Zeitplan für ihre Simulationssitzungen zu erstellen. Sie können die Start- und Endzeit der Sitzung festlegen sowie die Dauer des Briefings, der Simulation und des Debriefings angeben. Es ist auch möglich, eine Pausenzeit zwischen den Gruppen zu definieren.
 
+## Screenshots
+<img src="screenshot_1.png" alt="Eingabemaske" width="400"><img src="screenshot_2.png" alt="Ausgabe als PDF" width="400">
+
 ## Verwendung
 
 1. Geben Sie die Namen der Lernenden in das dafür vorgesehene Textfeld ein.
