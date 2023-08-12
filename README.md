@@ -13,9 +13,9 @@ Die Webanwendung ermöglicht es, eine Liste von Lernenden zufällig in Gruppen a
 3. Geben Sie die Dauer des Briefings, der Simulation und des Debriefings in Minuten an.
 4. Definieren Sie die Pausenzeit zwischen den Gruppen.
 5. Wählen Sie die Anzahl der Gruppen, in die die Lernenden aufgeteilt werden sollen.
-6. Klicken Sie auf "Gruppen bilden", um die Gruppeneinteilung und den Zeitplan zu generieren.
+6. Klicken Sie auf *Gruppen bilden*, um die Gruppeneinteilung und den Zeitplan zu generieren.
 7. Die erstellten Gruppen und der Zeitplan werden auf der Seite angezeigt.
-8. Sie können die "Drucken" Schaltfläche verwenden, um die Ergebnisse auszudrucken.
+8. Sie können die *Drucken* Schaltfläche verwenden, um die Ergebnisse auszudrucken.
 
 **Hinweis:** Für ein optimales Druckergebnis stellen Sie bitte manuell die Seitenausrichtung auf Querformat ein, da die automatische Seitenausrichtung beim Drucken möglicherweise nicht korrekt funktioniert.
 
