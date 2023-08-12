@@ -26,7 +26,3 @@ Die Webanwendung benötigt einen modernen Webbrowser, der JavaScript unterstütz
 ## Autor
 
 Diese Webanwendung wurde von Florian Loyns entwickelt.
-
-## Lizenz
-
-Dieses Projekt steht unter der [MIT-Lizenz](https://github.com/SimuZen/SimGroup/blob/main/LICENSE). Sie können die Software frei verwenden, ändern und verteilen, unter der Bedingung, dass der Urheberrechtsvermerk und die Lizenzbedingungen erhalten bleiben.
