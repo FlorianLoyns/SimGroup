@@ -25,7 +25,3 @@ Die Webanwendung ermöglicht es, eine Liste von Lernenden zufällig in Gruppen a
 ## Anforderungen
 
 Die Webanwendung benötigt einen modernen Webbrowser, der JavaScript unterstützt.
-
-## Autor
-
-Diese Webanwendung wurde von Florian Loyns entwickelt.
