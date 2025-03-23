@@ -2,6 +2,8 @@
 
 Dieses Repository enthält eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden. Klicken Sie [hier](https://FlorianLoyns.github.io/SimGroup/), um die Webseite anzuzeigen und zu nutzen.
 
+👉 **[Hier klicken, um die Zeitplanung direkt online auszuprobieren!]([https://FlorianLoyns.github.io/Lerntypentest/](https://FlorianLoyns.github.io/SimGroup/)**
+
 ## Beschreibung
 
 Die Webanwendung ermöglicht es, eine Liste von Lernenden zufällig in Gruppen aufzuteilen und einen Zeitplan für ihre Simulationssitzungen zu erstellen. Sie können die Start- und Endzeit der Sitzung festlegen sowie die Dauer des Briefings, der Simulation und des Debriefings angeben. Es ist auch möglich, eine Pausenzeit zwischen den Gruppen zu definieren.
