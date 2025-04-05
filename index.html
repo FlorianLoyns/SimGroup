@@ -6,41 +6,76 @@
       <meta name="description" content="Eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden." />
       <meta name="keywords" content="Gruppeneinteilung, Zeitplanung, Simulationssitzungen, Webanwendung, Lernende, Effizienz" />
       <style>
-         .container {
+         body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+         padding: 20px;
+         background-color: #ffffff;
+         color: #000000;
          max-width: 900px;
-         margin: 0 auto;
+         margin: auto;
+         }
+         h1 {
          text-align: center;
+         margin-bottom: 1em;
          }
-         .container2 {
-         max-width: 600px;
-         margin: 0 auto;
-         text-align: center;
+         textarea,
+         input[type="time"],
+         input[type="number"] {
+         width: 100%;
+         max-width: 500px;
+         padding: 10px;
+         margin: 8px 0;
+         font-size: 16px;
+         box-sizing: border-box;
          }
-         .container2 p {
-         text-align: justify;
+         label {
+         font-weight: bold;
+         display: block;
+         margin-top: 10px;
          }
-         .group {
-         margin-bottom: 20px;
+         button {
+         padding: 10px 20px;
+         font-size: 18px;
+         cursor: pointer;
+         width: 100%;
+         max-width: 300px;
+         margin-top: 20px;
+         display: block;
+         background-color: #007BFF;
+         color: #fff;
+         border: none;
+         border-radius: 6px;
+         transition: background-color 0.3s ease;
+         }
+         button:hover {
+         background-color: #0056b3;
          }
          .table-container {
          width: 100%;
          overflow-x: auto;
+         margin-top: 20px;
          }
          table {
          margin: 0 auto;
          border-collapse: collapse;
          width: 100%;
+         font-size: 14px;
          }
          th,
          td {
          border: 1px solid black;
-         padding: 5px;
+         padding: 8px;
+         text-align: center;
          }
-         .names {
-         width: 35%;
+         td.names {
+         text-align: left;
          }
          .hidden {
          display: none;
+         }
+         .container2 p {
+         text-align: justify;
+         line-height: 1.5;
          }
          @media print {
          @page {
@@ -58,33 +93,6 @@
          left: 0;
          top: 0;
          }
-         table {
-         font-family: "Times New Roman", Times, serif;
-         border-collapse: collapse;
-         width: 99%;
-         margin: 0;
-         border: 1px solid black;
-         }
-         th,
-         td {
-         border: 1px solid black;
-         text-align: left;
-         padding: 3px;
-         }
-         th {
-         background-color: #ddd;
-         text-align: center;
-         }
-         td {
-         background-color: #fff;
-         }
-         td.names {
-         text-align: left;
-         }
-         th,
-         td:not(.names) {
-         text-align: center;
-         }
          }
       </style>
    </head>
@@ -98,6 +106,7 @@
             <p>
                Sie können die Start- und Endzeit sowie die Dauer der Simulationssitzung (inklusive Briefing-, Simulations- und Debriefing-Zeit) festlegen und eine Pausenzeit zwischen den Gruppen definieren.
             </p>
+            <p><em>Hinweis: Diese Webanwendung speichert keine Daten und überträgt keine Informationen an Dritte. Die Verarbeitung erfolgt ausschließlich lokal im Browser – vollständig DSGVO-konform.</em></p>
             <p>
                <strong>Geben Sie die Namen der Lernenden ein und klicken Sie auf "Gruppen bilden", um sie zufällig in Gruppen aufzuteilen. Die erstellten Gruppen und der Zeitplan werden auf der Seite angezeigt.
                </strong>
