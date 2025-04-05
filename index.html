@@ -5,96 +5,136 @@
       <meta charset="UTF-8" />
       <meta name="description" content="Eine Webanwendung zur effizienten Organisation von Gruppen und Zeitplanung für Simulationssitzungen mit Lernenden." />
       <meta name="keywords" content="Gruppeneinteilung, Zeitplanung, Simulationssitzungen, Webanwendung, Lernende, Effizienz" />
-      <style>
-         body {
-         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-         padding: 20px;
-         background-color: #ffffff;
-         color: #000000;
-         max-width: 900px;
-         margin: auto;
-         }
-         h1 {
-         text-align: center;
-         margin-bottom: 1em;
-         }
-         textarea,
-         input[type="time"],
-         input[type="number"] {
-         width: 100%;
-         max-width: 500px;
-         padding: 10px;
-         margin: 8px 0;
-         font-size: 16px;
-         box-sizing: border-box;
-         }
-         label {
-         font-weight: bold;
-         display: block;
-         margin-top: 10px;
-         }
-         button {
-         padding: 10px 20px;
-         font-size: 18px;
-         cursor: pointer;
-         width: 100%;
-         max-width: 300px;
-         margin-top: 20px;
-         display: block;
-         background-color: #007BFF;
-         color: #fff;
-         border: none;
-         border-radius: 6px;
-         transition: background-color 0.3s ease;
-         }
-         button:hover {
-         background-color: #0056b3;
-         }
-         .table-container {
-         width: 100%;
-         overflow-x: auto;
-         margin-top: 20px;
-         }
-         table {
-         margin: 0 auto;
-         border-collapse: collapse;
-         width: 100%;
-         font-size: 14px;
-         }
-         th,
-         td {
-         border: 1px solid black;
-         padding: 8px;
-         text-align: center;
-         }
-         td.names {
-         text-align: left;
-         }
-         .hidden {
-         display: none;
-         }
-         .container2 p {
-         text-align: justify;
-         line-height: 1.5;
-         }
-         @media print {
-         @page {
-         size: landscape;
-         }
-         body * {
-         visibility: hidden;
-         }
-         .table-container,
-         .table-container * {
-         visibility: visible;
-         }
-         .table-container {
-         position: absolute;
-         left: 0;
-         top: 0;
-         }
-         }
-      </style>
+     <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        padding: 20px;
+        background-color: #ffffff;
+        color: #000000;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    textarea,
+    input[type="time"],
+    input[type="number"] {
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 20px;
+        display: block;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+
+    td.names {
+        text-align: left;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .container2 p {
+        text-align: justify;
+        line-height: 1.5;
+    }
+
+    /* DRUCK-OPTIMIERUNG */
+    @media print {
+        @page {
+            size: A4 landscape;
+            margin: 10mm;
+        }
+
+        body {
+            zoom: 0.95;
+            font-size: 95%;
+        }
+
+        body * {
+            visibility: hidden;
+        }
+
+        .table-container,
+        .table-container * {
+            visibility: visible;
+        }
+
+        .table-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 6px;
+            text-align: center;
+        }
+
+        td.names {
+            text-align: left;
+        }
+    }
+</style>
    </head>
    <body>
       <div class="container">
